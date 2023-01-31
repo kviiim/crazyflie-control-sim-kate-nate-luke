@@ -17,6 +17,7 @@ class Controller1D():
         self.kp_z = pid_gains.kp
         self.ki_z = pid_gains.ki
         self.kd_z = pid_gains.kd
+        self.accumulated_error = 0.
 
     def compute_commands(self, setpoint, state):
         """
@@ -27,7 +28,9 @@ class Controller1D():
         Returns:
         - U (float): total upward thrust
         """
-        U = 0
+        error = setpoint.z_pos-state.z_pos
+        self.accumulated_error += error
+        U = self.kp_z * error + self.ki_z*self.accumulated_error + self.kd_z*state.z_vel
 
         # your code here
 
