@@ -30,8 +30,15 @@ class Controller1D():
         """
         error = setpoint.z_pos-state.z_pos
         self.accumulated_error += error
-        U = self.kp_z * error + self.ki_z*self.accumulated_error + self.kd_z*state.z_vel
 
+        gain = 1
+        self.kp_z = .52
+        self.ki_z = 0.000001
+        self.kd_z = -0.28
+        p = self.kp_z* error
+        i = self.ki_z*self.accumulated_error
+        d = self.kd_z*state.z_vel
+    
         # your code here
-
-        return U
+        command = gain* (p + d + i) + self.params.mass*self.params.g
+        return command
