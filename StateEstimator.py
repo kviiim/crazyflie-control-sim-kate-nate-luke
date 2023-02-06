@@ -23,10 +23,10 @@ class StateEstimator1D():
         self.vel_var = 0.01
 
         #NUMBERS? HOW TO CHOOSE?
-        self.pos_sensor_var = 0.1
-        self.pos_process_var = 0.1
-        self.vel_sensor_var = 0.1
-        self.vel_process_var = 0.1
+        self.pos_sensor_var = .2
+        self.pos_process_var = 0.01
+        self.vel_sensor_var = .2
+        self.vel_process_var = 0.01
 
     def compute(self, z_meas, U, time_delta):
         """
