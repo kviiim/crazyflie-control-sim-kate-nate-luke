@@ -143,3 +143,6 @@ def print_info(sim_params):
     3. Show animation =  {sim_params.show_animation_flag} \n \
     4. Simulation time = {sim_params.sim_time} \n '
     print(intro_txt)
+
+def compute_velocity(z_pos_raw, last_z_pos_raw, time_delta):
+    return (z_pos_raw - last_z_pos_raw)/time_delta

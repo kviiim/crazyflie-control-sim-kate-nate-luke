@@ -32,9 +32,9 @@ class Controller1D():
         self.accumulated_error += error
 
         gain = 1
-        self.kp_z = .57
-        self.ki_z = 0.001
-        self.kd_z = -0.28
+        self.kp_z = .5
+        self.ki_z = 0.005
+        self.kd_z = -0.3
         p = self.kp_z* error
         i = self.ki_z*self.accumulated_error
         d = self.kd_z*state.z_vel
